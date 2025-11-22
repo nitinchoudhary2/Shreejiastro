@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रीजी एस्ट्रो | Live Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="home-screen">
+        <div class="secret-btn" onclick="openAdminLogin()">🪶</div>
+        <h1>श्रीजी एस्ट्रो</h1>
+        <p class="mantra">|| राधे राधे ||</p>
+        <div class="center-icon-container">
+            <img src="https://i.pinimg.com/736x/7c/1b/2a/7c1b2a61696170865664746849564e49.jpg" 
+                 class="krishna-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3659/3659932.png'">
+        </div>
+        <p style="margin-top: 40px; color: #ddd;">समस्या भेजें, समाधान पाएं (Live Chat)</p>
+        <button class="main-btn" onclick="enterAsCustomer()">चैट शुरू करें</button>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="login-box">
+            <h3 style="color:var(--gold);">Admin Login</h3>
+            <input type="password" id="adminPass" placeholder="Password">
+            <button class="send-btn" onclick="checkLogin()">Login</button>
+            <br><button onclick="closeModal()" style="background:none; border:none; color:#aaa; margin-top:10px; cursor:pointer;">Cancel</button>
+        </div>
+    </div>
+
+    <div id="chat-screen">
+        <div class="header">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/11060/11060767.png" width="40" style="border-radius:50%; background:white;">
+                <div>
+                    <h3 id="chatTitle" style="margin:0; color:var(--gold);">श्रीजी महाराज</h3>
+                    <span style="font-size:0.8rem; color:lightgreen;">● Online</span>
+                </div>
+            </div>
+            <button onclick="logout()" style="background:transparent; border:1px solid red; color:red; padding:5px 10px; border-radius:15px; cursor:pointer;">Exit</button>
+        </div>
+        
+        <div id="chatArea" class="chat-area"></div>
+        
+        <div class="input-area">
+            <label for="fileInput" class="file-btn">📎</label>
+            <input type="file" id="fileInput" accept="image/*" style="display:none;">
+            <input type="text" id="msgInput" placeholder="Type here...">
+            <div id="loader" class="loader"></div>
+            <button class="send-btn" onclick="sendMessage()" id="sendBtn">➤</button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
