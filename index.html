@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रीजी एस्ट्रो | Shreeji Astro - Live Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- थीम सेटिंग्स --- */
+        :root {
+            --gold: #FFD700;
+            --dark-bg: #1a0b2e;
+            --panel-bg: #2d1b4e;
+            --chat-sent: #4a235a;
+            --chat-received: #154360;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(circle at center, #1a0b2e 0%, #000000 100%);
+            color: var(--gold);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- 1. होम पेज (Landing Page) --- */
+        #home-screen {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3.5rem;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        /* बाबा की फोटो (कोने में) */
+        .baba-corner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+        }
+
+        .baba-corner img { width: 100%; height: 100%; object-fit: cover; }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* --- 2. लॉगिन स्क्रीन (Login Modal) --- */
+        .modal {
+            display: none; /* शुरुआत में छिपा हुआ */
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            background: var(--panel-bg);
+            padding: 30px;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #000;
+            border: 1px solid var(--gold);
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: none;
+            padding: 10px 20px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        /* --- 3. चैट स्क्रीन (Customer Side) --- */
+        #chat-screen {
+            display: none;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: var(--panel-bg);
+            padding: 15px;
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-area {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .bot-msg { align-self: flex-start; background: var(--chat-received); border: 1px solid var(--gold); }
+        .user-msg { align-self: flex-end; background: var(--chat-sent); border: 1px solid #9b59b6; }
+
+        .chat-input-area {
+            padding: 15px;
+            background: var(--panel-bg);
+            display: flex;
+            gap: 10px;
+        }
+
+        /* --- 4. एडमिन पैनल (Owner Side) --- */
+        #admin-screen {
+            display: none;
+            height: 100%;
+            padding: 20px;
+            background: #111;
+        }
+        .admin-msg-row {
+            background: #222;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-left: 4px solid var(--gold);
+        }
+
+        /* Secret Admin Button (Hidden on Home) */
+        .secret-admin-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            opacity: 0.3;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="home-screen">
+        <div class="secret-admin-btn" onclick="showAdminLogin()">Admin Access</div>
+
+        <h1>श्रीजी एस्ट्रो</h1>
+        <p style="font-size: 1.2rem; letter-spacing: 2px;">|| जय श्री राधे ||</p>
+        
+        <div style="margin-top: 50px; width: 200px; height: 200px; border: 2px dashed gold; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: spin 20s linear infinite;">
+            <div style="font-size: 3rem;">🕉️</div>
+        </div>
+
+        <p style="margin-top: 30px;">समस्या का समाधान पाने के लिए बाबा जी से बात करें।</p>
+        <button onclick="openLoginModal()" style="margin-top: 20px; font-size: 1.2rem;">चैट शुरू करें</button>
+    </div>
+
+    <div class="baba-corner" onclick="openLoginModal()">
+        <img src="baba.jpg" alt="Baba Ji" onerror="this.src='https://via.placeholder.com/100?text=Baba'">
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="login-box">
+            <h3>लॉगिन करें</h3>
+            <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px;">कृपया अपना मोबाइल नंबर डालें</p>
+            <input type="number" id="userMobile" placeholder="Mobile Number (e.g. 9876543210)">
+            <button onclick="loginCustomer()">OTP भेजें & लॉगिन करें</button>
+            <button onclick="closeModal()" style="background: transparent; color: #fff; border: 1px solid #fff; margin-top: 5px;">रद्द करें</button>
+        </div>
+    </div>
+
+    <div id="admin-login-modal" class="modal">
+        <div class="login-box">
+            <h3>Owner Login</h3>
+            <input type="password" id="adminPass" placeholder="Enter Password">
+            <button onclick="checkAdminPass()">Login</button>
+            <button onclick="closeModal()" style="background: transparent; color: #fff; border: 1px solid #fff;">Cancel</button>
+        </div>
+    </div>
+
+    <div id="chat-screen">
+        <div class="chat-header">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="baba.jpg" style="width:40px; height:40px; border-radius:50%; border:1px solid gold;" onerror="this.src='https://via.placeholder.com/40'">
+                <div>
+                    <h3 style="margin:0;">श्रीजी महाराज</h3>
+                    <span style="font-size:0.8rem; color:#0f0;">● Online (AI Assistant)</span>
+                </div>
+            </div>
+            <button onclick="logout()" style="padding:5px 10px; font-size:0.8rem;">Exit</button>
+        </div>
+        <div class="chat-area" id="message-area">
+            </div>
+        <div class="chat-input-area">
+            <input type="text" id="msgInput" placeholder="अपनी समस्या लिखें..." onkeypress="handleEnter(event)">
+            <button onclick="sendMessage()">भेजें ➤</button>
+        </div>
+    </div>
+
+    <div id="admin-screen">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <h2>Admin Panel (Owner)</h2>
+            <button onclick="logout()">Logout</button>
+        </div>
+        <div id="admin-msg-list">
+            <p>No new messages yet.</p>
+        </div>
+    </div>
+
+    <script>
+        // --- वेरिएबल्स ---
+        let currentUser = null;
+        const adminPassword = "123"; // एडमिन का पासवर्ड (इसे आप बदल सकते हैं)
+        
+        // --- स्क्रीन नेविगेशन ---
+        function showScreen(screenId) {
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('chat-screen').style.display = 'none';
+            document.getElementById('admin-screen').style.display = 'none';
+            document.getElementById(screenId).style.display = (screenId === 'chat-screen' ? 'flex' : 'block');
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        }
+
+        function openLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+        }
+
+        // --- ग्राहक लॉगिन फंक्शन ---
+        function loginCustomer() {
+            const mobile = document.getElementById('userMobile').value;
+            if(mobile.length < 10) {
+                alert("कृपया सही मोबाइल नंबर डालें।");
+                return;
+            }
+            currentUser = mobile;
+            closeModal();
+            showScreen('chat-screen');
+            addBotMessage("राधे राधे! मैं आश्रम का AI सेवक हूँ। आप अपनी समस्या बताएं, गुरुजी शीघ्र ही आपसे जुड़ेंगे।");
+            addBotMessage("आप पूछ सकते हैं: 'फीस क्या है?', 'कुंडली', 'शादी कब होगी?'");
+        }
+
+        // --- एडमिन लॉगिन ---
+        function showAdminLogin() {
+            document.getElementById('admin-login-modal').style.display = 'flex';
+        }
+
+        function checkAdminPass() {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === adminPassword) {
+                closeModal();
+                showScreen('admin-screen');
+                loadAdminView();
+            } else {
+                alert("गलत पासवर्ड!");
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            showScreen('home-screen');
+            document.getElementById('message-area').innerHTML = '';
+        }
+
+        // --- चैट सिस्टम (AI Logic) ---
+        function handleEnter(e) {
+            if(e.key === 'Enter') sendMessage();
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('msgInput');
+            const text = input.value.trim();
+            if(!text) return;
+
+            // 1. यूजर का मैसेज दिखाएं
+            addUserMessage(text);
+            input.value = '';
+
+            // 2. एडमिन के लिए सेव करें (Simulation)
+            saveToAdmin(currentUser, text);
+
+            // 3. AI का जवाब (Simulated Logic)
+            setTimeout(() => {
+                getAIResponse(text);
+            }, 1000);
+        }
+
+        function addUserMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'message user-msg';
+            div.innerText = text;
+            document.getElementById('message-area').appendChild(div);
+            scrollToBottom();
+        }
+
+        function addBotMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'message bot-msg';
+            div.innerHTML = text;
+            document.getElementById('message-area').appendChild(div);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            const area = document.getElementById('message-area');
+            area.scrollTop = area.scrollHeight;
+        }
+
+        // --- AI दिमाग (Auto Reply) ---
+        function getAIResponse(text) {
+            const lowerText = text.toLowerCase();
+            
+            if(lowerText.includes("fees") || lowerText.includes("price") || lowerText.includes("पैसे") || lowerText.includes("फीस")) {
+                addBotMessage("हमारी सामान्य कुंडली परामर्श फीस ₹501 है। विशेष पूजा के लिए गुरुजी से बात करनी होगी।");
+            }
+            else if(lowerText.includes("hello") || lowerText.includes("hi") || lowerText.includes("namaste")) {
+                addBotMessage("जय श्री कृष्णा! आपकी क्या सेवा कर सकते हैं?");
+            }
+            else if(lowerText.includes("shadi") || lowerText.includes("marriage") || lowerText.includes("job")) {
+                addBotMessage("इसके लिए हमें आपकी जन्म तारीख और समय चाहिए। कृपया यहाँ लिखें।");
+            }
+            else {
+                addBotMessage("आपका प्रश्न नोट कर लिया गया है। गुरुजी (Owner) अभी ऑनलाइन नहीं हैं, वे जल्द ही इसका उत्तर देंगे।");
+            }
+        }
+
+        // --- एडमिन डेटा सिमुलेशन ---
+        let adminMessages = [];
+        
+        function saveToAdmin(user, msg) {
+            const time = new Date().toLocaleTimeString();
+            adminMessages.push({ user, msg, time });
+        }
+
+        function loadAdminView() {
+            const list = document.getElementById('admin-msg-list');
+            if(adminMessages.length === 0) {
+                list.innerHTML = "<p>अभी कोई मैसेज नहीं आया है।</p>";
+                return;
+            }
+            let html = '';
+            adminMessages.forEach(item => {
+                html += `<div class="admin-msg-row">
+                            <strong style="color:#0f0">${item.user}</strong> <span style="font-size:0.8rem">(${item.time})</span><br>
+                            ${item.msg}
+                         </div>`;
+            });
+            list.innerHTML = html;
+        }
+        
+        // Any basic animation for wheel
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes spin { 100% { transform: rotate(360deg); } }
+        `;
+        document.head.appendChild(styleSheet);
+
+    </script>
+</body>
+</html>
