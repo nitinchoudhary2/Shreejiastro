@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रीजी एस्ट्रो | Live Astrology Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- ADVANCED SOFT UI DESIGN SYSTEM --- */
+        :root {
+            --primary-gold: #FFD700;
+            --soft-gold: rgba(255, 215, 0, 0.6);
+            --cosmic-purple: #1a0033;
+            --deep-space: #000814;
+            --starry-blue: #0a0a2e;
+            --message-user: #ff9933;
+            --message-admin: #4fa3d1;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --soft-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            --glow-gold: 0 0 20px rgba(255, 215, 0, 0.3);
+            --transition-soft: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* --- ENHANCED FLOATING ELEMENTS WITH SOFT ANIMATIONS --- */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--soft-gold) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(79, 163, 209, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+            animation: subtleShift 20s infinite ease-in-out;
+        }
+
+        @keyframes subtleShift {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .krishna-crown {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            z-index: -1;
+            opacity: 0.12;
+            animation: floatCrown 8s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px var(--soft-gold));
+        }
+
+        @keyframes floatCrown {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            33% { transform: translate(-50%, -50%) rotate(2deg) scale(1.02); }
+            66% { transform: translate(-50%, -50%) rotate(-2deg) scale(1.03); }
+        }
+
+        /* --- LOADING STATES --- */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--soft-gold);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- 1. ENHANCED HOME SCREEN --- */
+        #home-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .home-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px 40px;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--soft-shadow);
+            animation: fadeInUp 1.2s ease-out;
+            max-width: 550px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--soft-gold), transparent);
+            opacity: 0;
+            transition: var(--transition-soft);
+        }
+
+        .home-card:hover::before {
+            opacity: 0.1;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .center-icon-container {
+            width: 180px;
+            height: 180px;
+            border: 2px dashed var(--soft-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 25px auto;
+            box-shadow: var(--glow-gold);
+            animation: pulseGlow 4s infinite ease-in-out;
+            position: relative;
+        }
+
+        .center-icon-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from 0deg, transparent, var(--soft-gold), transparent);
+            opacity: 0.3;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: var(--glow-gold); }
+            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+        }
+
+        .krishna-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: float 5s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .main-btn {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(45deg, var(--primary-gold), #FFA500);
+            color: var(--deep-space);
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(255, 165, 0, 0.4);
+            transition: var(--transition-soft);
+            margin-top: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .main-btn:hover::before {
+            left: 100%;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 35px rgba(255, 165, 0, 0.6);
+        }
+
+        /* --- ENHANCED ASTROLOGY FEATURES GRID --- */
+        .astro-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-soft);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            opacity: 0;
+            transition: var(--transition-soft);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--primary-gold);
+            box-shadow: var(--glow-gold);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+            transition: var(--transition-soft);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffbd69;
+        }
+
+        /* --- 2. ADVANCED CHAT SCREEN --- */
+        #chat-screen {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(to bottom, var(--cosmic-purple), var(--starry-blue));
+        }
+
+        .header {
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            flex-shrink: 0;
+            animation: slideDown 0.6s ease-out;
+            box-shadow: var(--soft-shadow);
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-gold), #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: var(--glow-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: rotate 2s linear infinite;
+            opacity: 0.7;
+        }
+
+        .chat-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background: linear-gradient(to bottom, rgba(26, 0, 51, 0.4), rgba(0, 8, 20, 0.4));
+            scrollbar-width: thin;
+            scrollbar-color: var(--soft-gold) transparent;
+        }
+
+        .chat-area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb {
+            background: var(--soft-gold);
+            border-radius: 4px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 16px 20px;
+            border-radius: 22px;
+            position: relative;
+            word-wrap: break-word;
+            font-size: 1rem;
+            animation: messagePop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--soft-shadow);
+            transition: var(--transition-soft);
+        }
+
+        .message:hover {
+            transform: scale(1.01);
+        }
+
+        @keyframes messagePop {
+            from { opacity: 0; transform: scale(0.9) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: linear-gradient(45deg, var(--message-user), #ff7b00);
+            color: black;
+            border-bottom-right-radius: 6px;
+        }
+
+        .message.admin {
+            align-self: flex-start;
+            background: linear-gradient(45deg, var(--message-admin), #2e8bc0);
+            color: white;
+            border-bottom-left-radius: 6px;
+        }
+
+        .message.astro {
+            align-self: center;
+            background: rgba(255, 215, 0, 0.12);
+            border: 1px solid var(--soft-gold);
+            max-width: 90%;
+            text-align: center;
+            font-style: italic;
+            color: var(--primary-gold);
+        }
+
+        .msg-img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: var(--transition-soft);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .msg-img:hover {
+            transform: scale(1.03);
+            box-shadow: var(--glow-gold);
+        }
+
+        .sender-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        /* --- ENHANCED INPUT AREA --- */
+        .input-area {
+            background: var(--glass-bg);
+            border-top: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            flex-shrink: 0;
+            box-shadow: var(--soft-shadow);
+        }
+
+        #msgInput {
+            flex: 1;
+            height: 55px;
+            padding: 0 25px;
+            border-radius: 28px;
+            border: 1px solid var(--glass-border);
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-soft);
+        }
+
+        #msgInput::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        #msgInput:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary-gold);
+            box-shadow: var(--glow-gold);
+        }
+
+        .file-btn {
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary-gold);
+            padding: 10px;
+            transition: var(--transition-soft);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .file-btn:hover {
+            transform: scale(1.15);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .send-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(45deg, var(--primary-gold), #FFA500);
+            color: var(--deep-space);
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-soft);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+            position: relative;
+        }
+
+        .send-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.4), transparent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: var(--transition-soft);
+        }
+
+        .send-btn:hover::before {
+            opacity: 1;
+            animation: rotate 1s linear infinite;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* --- MODALS WITH SOFT ENHANCEMENTS --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .login-box, .kundli-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 40px;
+            backdrop-filter: blur(25px);
+            width: 90%;
+            max-width: 450px;
+            animation: modalPop 0.5s ease-out;
+            box-shadow: var(--soft-shadow);
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        input[type="password"], input[type="text"], input[type="date"], input[type="time"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-soft);
+        }
+
+        input[type="password"]:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: var(--glow-gold);
+        }
+
+        input[type="password"]::placeholder, input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        button {
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-soft);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-gold), #FFA500);
+            color: var(--deep-space);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--primary-gold);
+        }
+
+        .secret-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            opacity: 0.4;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition-soft);
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .secret-btn:hover {
+            opacity: 0.9;
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.1);
+        }
+
+        /* --- ENHANCED PANCHANG WIDGET --- */
+        .panchang-widget {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 15px 20px;
+            backdrop-filter: blur(12px);
+            font-size: 0.8rem;
+            max-width: 220px;
+            text-align: left;
+            box-shadow: var(--soft-shadow);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .panchang-widget div:first-child {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .panchang-widget div {
+            line-height: 1.4;
+            color: #ffbd69;
+        }
+
+        /* --- ENHANCED HOROSCOPE CARDS --- */
+        .horoscope-cards {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 15px 0;
+            margin-top: 20px;
+            scrollbar-width: none;
+        }
+
+        .horoscope-cards::-webkit-scrollbar {
+            display: none;
+        }
+
+        .horoscope-card {
+            min-width: 150px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-soft);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .horoscope-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: var(--primary-gold);
+            box-shadow: var(--glow-gold);
+        }
+
+        .zodiac-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+            transition: var(--transition-soft);
+        }
+
+        .horoscope-card:hover .zodiac-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        #dailyHoroscope {
+            margin-top: 25px;
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-gold);
+            line-height: 1.6;
+            color: #ffbd69;
+            font-style: italic;
+        }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 600px) {
+            .panchang-widget { display: none; }
+            .home-card { padding: 30px 25px; }
+            .astro-features { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .chat-area { padding: 20px; }
+            .input-area { padding: 12px 20px; }
+            .header { padding: 12px 20px; }
+            .modal { padding: 20px; }
+            .login-box, .kundli-box { padding: 30px 25px; }
+        }
+
+        /* --- ERROR TOAST --- */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 68, 68, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            z-index: 3000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: var(--transition-soft);
+            backdrop-filter: blur(10px);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: rgba(76, 175, 80, 0.9);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FLOATING KRISHNA MUKUT -->
+    <svg class="krishna-crown" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10 L30 40 L20 35 L30 60 L40 55 L50 90 L60 55 L70 60 L80 35 L70 40 Z" 
+              fill="#FFD700" opacity="0.4"/>
+        <circle cx="50" cy="40" r="15" fill="#4fa3d1" opacity="0.5"/>
+        <circle cx="35" cy="45" r="8" fill="#ff9933" opacity="0.5"/>
+        <circle cx="65" cy="45" r="8" fill="#ff9933" opacity="0.5"/>
+    </svg>
+
+    <!-- PANCHANG WIDGET -->
+    <div class="panchang-widget" id="panchang">
+        <div>🌅 आज का पंचांग</div>
+        <div id="panchangText">लोड हो रहा है...</div>
+    </div>
+
+    <!-- SECRET ADMIN BUTTON -->
+    <div class="secret-btn" onclick="openAdminLogin()" title="Admin Access">👑</div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+
+    <!-- HOME SCREEN -->
+    <div id="home-screen">
+        <div class="home-card">
+            <h1 style="font-family: 'Cinzel Decorative'; color: var(--primary-gold); font-size: 3rem; margin-bottom: 10px;">
+                श्रीजी एस्ट्रो
+            </h1>
+            <p style="color: #ffbd69; font-weight: bold; font-size: 1.3rem; margin-bottom: 25px;">
+                || राधे राधे || <i class="fas fa-heart" style="color: var(--primary-gold);"></i>
+            </p>
+            
+            <div class="center-icon-container">
+                <img src="https://i.pinimg.com/736x/7c/1b/2a/7c1b2a61696170865664746849564e49.jpg" class="krishna-img" alt="Shree Krishna" loading="lazy">
+            </div>
+
+            <!-- ASTROLOGY FEATURES -->
+            <div class="astro-features">
+                <div class="feature-card" onclick="showHoroscope()" title="राशिफल देखें">
+                    <div class="feature-icon">🔮</div>
+                    <div class="feature-text">राशिफल</div>
+                </div>
+                <div class="feature-card" onclick="showKundli()" title="कुंडली बनाएं">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-text">कुंडली</div>
+                </div>
+                <div class="feature-card" onclick="showGemstones()" title="रत्न सुझाव">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-text">रत्न</div>
+                </div>
+                <div class="feature-card" onclick="showNumerology()" title="अंक ज्योतिष">
+                    <div class="feature-icon">🔢</div>
+                    <div class="feature-text">अंक ज्योतिष</div>
+                </div>
+            </div>
+
+            <button class="main-btn" onclick="enterAsCustomer()">
+                <i class="fas fa-comments"></i> गुरुजी से चैट करें
+            </button>
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="login-modal" class="modal">
+        <div class="login-box">
+            <h3 style="color: var(--primary-gold); margin-bottom: 25px; font-size: 1.6rem; text-align: center;">
+                <i class="fas fa-shield-alt"></i> स्वामी लॉगिन
+            </h3>
+            <input type="password" id="adminPass" placeholder="पासवर्ड डालें" autocomplete="off">
+            <div style="display: flex; gap: 12px;">
+                <button class="btn-primary" onclick="checkLogin()" style="flex:1;">
+                    <i class="fas fa-sign-in-alt"></i> प्रवेश करें
+                </button>
+                <button class="btn-secondary" onclick="closeModal('login-modal')" style="flex:1;">
+                    <i class="fas fa-times"></i> रद्द करें
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- KUNDLI GENERATOR MODAL -->
+    <div id="kundli-modal" class="modal">
+        <div class="kundli-box">
+            <h3 style="color: var(--primary-gold); margin-bottom: 25px; text-align: center;">🌌 कुंडली जनरेटर</h3>
+            <input type="text" id="kundliName" placeholder="नाम" required>
+            <input type="date" id="kundliDob" required>
+            <input type="time" id="kundliTime" required>
+            <input type="text" id="kundliPlace" placeholder="जन्म स्थान (शहर)" required>
+            <button class="btn-primary" onclick="generateKundli()" style="width:100%; margin-bottom: 10px;">
+                <i class="fas fa-magic"></i> जनरेट करें
+            </button>
+            <button class="btn-secondary" onclick="closeModal('kundli-modal')" style="width:100%;">
+                <i class="fas fa-times"></i> बंद करें
+            </button>
+            <div id="kundliResult" style="margin-top: 15px; display: none; padding: 15px; background: rgba(255,215,0,0.1); border-radius: 10px; text-align: center;"></div>
+        </div>
+    </div>
+
+    <!-- CHAT SCREEN -->
+    <div id="chat-screen">
+        <div class="header">
+            <div class="user-info">
+                <div class="avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div>
+                    <h3 id="chatTitle" style="margin:0; color: var(--primary-gold); font-size: 1.3rem;">श्रीजी महाराज</h3>
+                    <span id="statusIndicator" style="font-size:0.8rem; color:lightgreen;">● ऑनलाइन</span>
+                </div>
+            </div>
+            <button onclick="exitChat()" 
+                    style="border:1px solid #ff4444; background:transparent; color:#ff4444; padding:10px 18px; border-radius:25px; cursor:pointer; font-weight:500; transition: var(--transition-soft);">
+                <i class="fas fa-sign-out-alt"></i> Exit
+            </button>
+        </div>
+        
+        <div id="chatArea" class="chat-area">
+            <div class="message astro" style="margin-top: 100px;">
+                <i class="fas fa-praying-hands"></i> नमस्कार भक्त! राधे राधे। अपनी समस्या बताएं, गुरुजी आशीर्वाद देंगे। 🙏
+            </div>
+        </div>
+        
+        <div class="input-area">
+            <label for="fileInput" class="file-btn" title="फोटो संलग्न करें"><i class="fas fa-paperclip"></i></label>
+            <input type="file" id="fileInput" accept="image/*" style="display:none">
+            
+            <input type="text" id="msgInput" placeholder="अपना संदेश लिखें..." maxlength="500">
+            
+            <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- HOROSCOPE MODAL -->
+    <div id="horoscope-modal" class="modal" style="align-items: flex-start; padding-top: 60px;">
+        <div class="kundli-box" style="max-width: 550px; max-height: 85vh; overflow-y: auto;">
+            <h3 style="color: var(--primary-gold); margin-bottom: 25px; text-align: center;">♈️ दैनिक राशिफल</h3>
+            <div class="horoscope-cards">
+                <div class="horoscope-card" onclick="showDailyHoroscope('मेष')">
+                    <div class="zodiac-icon">♈</div>
+                    <div>मेष</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('वृष')">
+                    <div class="zodiac-icon">♉</div>
+                    <div>वृष</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('मिथुन')">
+                    <div class="zodiac-icon">♊</div>
+                    <div>मिथुन</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('कर्क')">
+                    <div class="zodiac-icon">♋</div>
+                    <div>कर्क</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('सिंह')">
+                    <div class="zodiac-icon">♌</div>
+                    <div>सिंह</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('कन्या')">
+                    <div class="zodiac-icon">♍</div>
+                    <div>कन्या</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('तुला')">
+                    <div class="zodiac-icon">♎</div>
+                    <div>तुला</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('वृश्चिक')">
+                    <div class="zodiac-icon">♏</div>
+                    <div>वृश्चिक</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('धनु')">
+                    <div class="zodiac-icon">♐</div>
+                    <div>धनु</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('मकर')">
+                    <div class="zodiac-icon">♑</div>
+                    <div>मकर</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('कुंभ')">
+                    <div class="zodiac-icon">♒</div>
+                    <div>कुंभ</div>
+                </div>
+                <div class="horoscope-card" onclick="showDailyHoroscope('मीन')">
+                    <div class="zodiac-icon">♓</div>
+                    <div>मीन</div>
+                </div>
+            </div>
+            <div id="dailyHoroscope"></div>
+            <button class="btn-secondary" onclick="closeModal('horoscope-modal')" style="width:100%; margin-top:20px;">
+                <i class="fas fa-times"></i> बंद करें
+            </button>
+        </div>
+    </div>
+
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, updateDoc } 
+               from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } 
+               from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+        // Firebase Config (In production, use environment variables or secure hosting)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBg22VnPqDC2AiWzgu22fs5bS0KLI0PQCQ",
+            authDomain: "shreejiastro-57f1a.firebaseapp.com",
+            projectId: "shreejiastro-57f1a",
+            storageBucket: "shreejiastro-57f1a.firebasestorage.app",
+            messagingSenderId: "979268934814",
+            appId: "1:979268934814:web:006040c31781d831f76f8f",
+            measurementId: "G-HK8VYFXZEM"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        let currentUserType = 'customer'; // Default to customer, removed unused 'guest'
+        let unsubscribeMessages; // For cleaning up listener
+        const adminPassword = "Choudhary9462&"; // TODO: In production, use Firebase Auth for security
+
+        // Utility Functions
+        function showToast(message, type = 'error') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function toggleInput() {
+            const input = document.getElementById('msgInput');
+            const btn = document.getElementById('sendBtn');
+            btn.disabled = input.value.trim() === '';
+        }
+
+        // --- IMPROVED PANCHANG WITH BETTER CALCULATION ---
+        function updatePanchang() {
+            const now = new Date();
+            // Simplified real-ish panchang (use API in production)
+            const tithiNames = ["प्रतिपदा", "द्वितीया", "तृतीया", "चतुर्थी", "पंचमी", "षष्ठी", "सप्तमी", "अष्टमी", "नवमी", "दशमी", "एकादशी", "द्वादशी", "त्रयोदशी", "चतुर्दशी", "पूर्णिमा"];
+            const nakshatraNames = ["अश्विनी", "भरणी", "कृत्तिका", "रोहिणी", "मृगशिरा", "आर्द्रा", "पुनर्वसु", "पुष्य", "आश्लेषा", "मघा", "पूर्वा फाल्गुनी", "उत्तर फाल्गुनी", "हस्त", "चित्रा", "स्वाति", "विशाखा", "अनुराधा", "ज्येष्ठा", "मूल", "पूर्वाषाढ़ा", "उत्तराषाढ़ा", "श्रवण", "धनिष्ठा", "शतभिषा", "पूर्वभाद्रपद", "उत्तरभाद्रपद", "रेवती"];
+            
+            // Rough calculation based on lunar day (use ephemeris lib for accuracy)
+            const lunarDay = (now.getDate() + Math.floor(now.getHours() / 24)) % 30;
+            const tithiIndex = Math.floor(lunarDay * 15 / 30);
+            const nakshatraIndex = (now.getDate() * 13.333 % 27); // Approx
+
+            const dateStr = now.toLocaleDateString('hi-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            
+            document.getElementById('panchangText').innerHTML = `
+                तिथि: ${tithiNames[tithiIndex % 15]}<br>
+                नक्षत्र: ${nakshatraNames[Math.floor(nakshatraIndex) % 27]}<br>
+                <small>${dateStr}</small>
+            `;
+        }
+        updatePanchang();
+        setInterval(updatePanchang, 60000); // Update every minute
+
+        // --- SCREEN MANAGEMENT ---
+        window.enterAsCustomer = () => {
+            currentUserType = 'customer';
+            document.getElementById('chatTitle').innerText = "श्रीजी महाराज";
+            document.getElementById('msgInput').placeholder = "अपनी समस्या लिखें...";
+            document.getElementById('statusIndicator').textContent = "● ऑनलाइन";
+            switchScreen('chat-screen');
+            loadMessages();
+        };
+
+        window.exitChat = () => {
+            if (unsubscribeMessages) unsubscribeMessages();
+            switchScreen('home-screen');
+            document.getElementById('chatArea').innerHTML = '<div class="message astro" style="margin-top: 100px;"><i class="fas fa-praying-hands"></i> नमस्कार भक्त! राधे राधे। अपनी समस्या बताएं, गुरुजी आशीर्वाद देंगे। 🙏</div>';
+        };
+
+        window.openAdminLogin = () => {
+            document.getElementById('login-modal').style.display = 'flex';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('adminPass').focus();
+        };
+
+        window.checkLogin = () => {
+            const pass = document.getElementById('adminPass').value;
+            if (pass === adminPassword) {
+                currentUserType = 'admin';
+                document.getElementById('chatTitle').innerText = "Admin Panel (Live)";
+                document.getElementById('msgInput').placeholder = "भक्त को रिप्लाई दें...";
+                document.getElementById('statusIndicator').textContent = "● एक्टिव";
+                closeModal('login-modal');
+                switchScreen('chat-screen');
+                loadMessages();
+                showToast('✅ स्वागत है, स्वामीजी!', 'success');
+            } else {
+                showToast('❌ गलत पासवर्ड! पुनः प्रयास करें।');
+                document.getElementById('adminPass').value = '';
+                document.getElementById('adminPass').focus();
+            }
+        };
+
+        function switchScreen(id) {
+            ['home-screen', 'chat-screen'].forEach(screen => {
+                document.getElementById(screen).style.display = screen === id ? 'flex' : 'none';
+            });
+        }
+
+        // --- ENHANCED ASTROLOGY FEATURES ---
+        window.showHoroscope = () => document.getElementById('horoscope-modal').style.display = 'flex';
+
+        window.showKundli = () => document.getElementById('kundli-modal').style.display = 'flex';
+
+        window.showGemstones = () => {
+            const gems = [
+                '💎 माणिक (सूर्य) - नेतृत्व के लिए',
+                '🌙 मोती (चंद्र) - शांति के लिए',
+                '🟢 पन्ना (बुध) - बुद्धि के लिए',
+                '💜 पुष्पराग (गुरु) - ज्ञान के लिए',
+                '🔴 मूंगा (मंगल) - साहस के लिए'
+            ];
+            showToast('रत्न सिफारिशें:\n' + gems.join('\n'), 'success');
+        };
+
+        window.showNumerology = () => {
+            const num = prompt("अपना जन्म तारीख डालें (DDMMYYYY, उदाहरण: 15051990):");
+            if (num && num.match(/\d{8}/)) {
+                const sum = num.split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+                const root = sum % 9 || 9;
+                const traits = {
+                    1: 'नेतृत्वकारी और स्वतंत्र',
+                    2: 'सहयोगी और संवेदनशील',
+                    3: 'रचनात्मक और सामाजिक',
+                    4: 'व्यावहारिक और मेहनती',
+                    5: 'साहसी और स्वतंत्र',
+                    6: 'दयालु और जिम्मेदार',
+                    7: 'आध्यात्मिक और विश्लेषणात्मक',
+                    8: 'महत्वाकांक्षी और शक्तिशाली',
+                    9: 'उदार और आदर्शवादी'
+                };
+                showToast(`🔢 आपका मूलांक: \( {root}\nस्वभाव: \){traits[root]}`);
+            } else {
+                showToast('❌ सही फॉर्मेट में डालें: DDMMYYYY');
+            }
+        };
+
+        window.showDailyHoroscope = (sign) => {
+            const predictions = {
+                'मेष': 'आज का दिन ऊर्जा से भरा है। नए अवसर मिलेंगे। शुभ रंग: लाल।',
+                'वृष': 'धन लाभ के मजबूत योग। स्थिरता बनी रहेगी। शुभ रंग: हरा।',
+                'मिथुन': 'संचार कौशल चमकेगा। यात्रा लाभदायक। शुभ रंग: पीला।',
+                'कर्क': 'परिवार में सुख। भावनात्मक संतुलन रखें। शुभ रंग: सफेद।',
+                'सिंह': 'नेतृत्व के अवसर। आत्मविश्वास बढ़ेगा। शुभ रंग: सुनहरा।',
+                'कन्या': 'कार्यक्षेत्र में सफलता। स्वास्थ्य पर ध्यान। शुभ रंग: नीला।',
+                'तुला': 'संबंधों में सामंजस्य। सौंदर्य लाभ। शुभ रंग: गुलाबी।',
+                'वृश्चिक': 'गहन चिंतन फलदायी। रहस्य सुलझेंगे। शुभ रंग: काला।',
+                'धनु': 'यात्रा और शिक्षा लाभ। आशावादी रहें। शुभ रंग: बैंगनी।',
+                'मकर': 'कड़ी मेहनत रंग लाएगी। धैर्य रखें। शुभ रंग: भूरा।',
+                'कुंभ': 'नवीन विचार चमकेंगे। सामाजिकता बढ़ेगी। शुभ रंग: नीला।',
+                'मीन': 'आध्यात्मिक उन्नति। कल्पना शक्ति मजबूत। शुभ रंग: समुद्री नीला।'
+            };
+            document.getElementById('dailyHoroscope').innerHTML = `
+                <div id="dailyHoroscopeContent">
+                    <h4 style="color: var(--primary-gold); margin-bottom: 10px;">${sign} ♈️</h4>
+                    <p>${predictions[sign] || 'आज का दिन शांतिपूर्ण रहेगा। ध्यान रखें।'}</p>
+                    <small style="color: #ffbd69;">राधे राधे 🙏</small>
+                </div>
+            `;
+        };
+
+        window.generateKundli = () => {
+            const name = document.getElementById('kundliName').value;
+            const dob = document.getElementById('kundliDob').value;
+            const time = document.getElementById('kundliTime').value;
+            const place = document.getElementById('kundliPlace').value;
+
+            if (!name || !dob || !time || !place) {
+                showToast('❌ सभी फील्ड भरें!');
+                return;
+            }
+
+            // Simulated kundli (use real API like astrosage in production)
+            const rashi = ['मेष', 'वृष', 'मिथुन', 'कर्क', 'सिंह', 'कन्या', 'तुला', 'वृश्चिक', 'धनु', 'मकर', 'कुंभ', 'मीन'][Math.floor(Math.random() * 12)];
+            const result = `
+                <h4 style="color: var(--primary-gold);">कुंडली रिपोर्ट: ${name}</h4>
+                <p><strong>जन्म राशि:</strong> ${rashi}</p>
+                <p><strong>मुख्य फल:</strong> जीवन में सफलता के योग। गुरु की कृपा बनी रहेगी।</p>
+                <p><strong>उपाय:</strong> रोज़ हनुमान चालीसा पाठ करें।</p>
+                <small>पूर्ण रिपोर्ट के लिए संपर्क करें।</small>
+            `;
+            document.getElementById('kundliResult').innerHTML = result;
+            document.getElementById('kundliResult').style.display = 'block';
+            showToast('✅ कुंडली जनरेट हो गई!', 'success');
+        };
+
+        // --- ENHANCED CHAT FUNCTIONS ---
+        function loadMessages() {
+            if (unsubscribeMessages) unsubscribeMessages(); // Cleanup previous listener
+
+            const q = query(collection(db, "chats"), orderBy("createdAt", "asc"));
+            unsubscribeMessages = onSnapshot(q, (snapshot) => {
+                const area = document.getElementById("chatArea");
+                area.innerHTML = "";
+                
+                if (snapshot.empty) {
+                    const welcomeMsg = document.createElement("div");
+                    welcomeMsg.className = "message astro";
+                    welcomeMsg.innerHTML = '<i class="fas fa-praying-hands"></i> नमस्कार भक्त! राधे राधे। अपनी समस्या बताएं, गुरुजी आशीर्वाद देंगे। 🙏';
+                    area.appendChild(welcomeMsg);
+                    return;
+                }
+
+                snapshot.forEach((doc) => {
+                    const msg = doc.data();
+                    const div = document.createElement("div");
+                    
+                    if (msg.sender === 'system') {
+                        div.className = "message astro";
+                    } else {
+                        div.className = `message ${msg.sender === currentUserType ? (currentUserType === 'customer' ? 'user' : 'admin') : (currentUserType === 'customer' ? 'admin' : 'user')}`;
+                    }
+
+                    const senderName = msg.sender === 'customer' ? 'भक्त' : (msg.sender === 'admin' ? 'गुरुजी' : 'सिस्टम');
+                    const nameColor = msg.sender === currentUserType ? (currentUserType === 'customer' ? '#000' : '#fff') : (currentUserType === 'customer' ? '#4fa3d1' : '#ff9933');
+                    
+                    let content = msg.sender !== 'system' ? `<div class="sender-name" style="color:\( {nameColor}"> \){senderName}</div>` : '';
+                    if (msg.text) content += `<div>${msg.text}</div>`;
+                    if (msg.imageUrl) content += `<img src="${msg.imageUrl}" class="msg-img" alt="संलग्न छवि" onclick="window.open(this.src, '_blank')">`;
+                    
+                    div.innerHTML = content;
+                    area.appendChild(div);
+                });
+                
+                setTimeout(() => area.scrollTop = area.scrollHeight, 200);
+            }, (error) => {
+                showToast('❌ चैट लोड करने में त्रुटि: ' + error.message);
+            });
+        }
+
+        window.sendMessage = async () => {
+            const txtInput = document.getElementById('msgInput');
+            const fileInput = document.getElementById('fileInput');
+            const txt = txtInput.value.trim();
+            const file = fileInput.files[0];
+
+            if (!txt && !file) return;
+
+            const btn = document.getElementById('sendBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<div class="loading"></div>';
+
+            try {
+                let url = null;
+                if (file) {
+                    if (file.size > 5 * 1024 * 1024) throw new Error('फाइल 5MB से अधिक नहीं होनी चाहिए!');
+                    const sRef = ref(storage, `images/\( {Date.now()}_ \){file.name}`);
+                    await uploadBytes(sRef, file);
+                    url = await getDownloadURL(sRef);
+                }
+
+                await addDoc(collection(db, "chats"), {
+                    text: txt,
+                    imageUrl: url,
+                    sender: currentUserType,
+                    createdAt: serverTimestamp(),
+                    read: false // For future notifications
+                });
+
+                txtInput.value = "";
+                fileInput.value = "";
+                toggleInput(); // Reset button
+
+            } catch (e) {
+                console.error(e);
+                showToast('❌ त्रुटि: ' + (e.message || 'संदेश भेजने में समस्या'));
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            }
+        };
+
+        // Event Listeners
+        document.getElementById('msgInput').addEventListener('input', toggleInput);
+        document.getElementById('msgInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !document.getElementById('sendBtn').disabled) sendMessage();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            if (e.target.files[0]) {
+                showToast(`📎 ${e.target.files[0].name} संलग्न!`);
+                sendMessage(); // Auto-send if file selected
+            }
+        });
+
+        // Initial setup
+        toggleInput();
+        updatePanchang();
+    </script>
+</body>
+</html>
