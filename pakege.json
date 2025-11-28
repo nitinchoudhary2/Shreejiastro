@@ -1,0 +1,12 @@
+{
+  "name": "shreeji-admin-tools",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "set-admin": "node admin-tools.js --email=admin@example.com"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.10.0",
+    "yargs": "^17.7.2"
+  }
+}
