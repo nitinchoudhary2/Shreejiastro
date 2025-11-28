@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>श्रीजी एस्ट्रो | Live Chat</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Three.js for 3D -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- 3D Canvas Background -->
+  <canvas id="bgCanvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Panchang Widget -->
+  <aside class="panchang" id="panchang" aria-live="polite">लोड हो रहा है...</aside>
+
+  <!-- Home / Chat Container -->
+  <main id="app" class="container">
+
+    <!-- Home Card -->
+    <section id="home-screen" class="screen active">
+      <div class="card home-card">
+        <h1 class="brand">श्रीजी एस्ट्रो</h1>
+        <p class="tag">|| राधे राधे ||</p>
+
+        <div class="avatar-3d" id="avatar3d" aria-hidden="true"></div>
+
+        <div class="features">
+          <button class="btn feature" id="openKundliBtn"><i class="fa-solid fa-chart-pie"></i> कुंडली</button>
+          <button class="btn feature" id="enterChatBtn"><i class="fa-solid fa-comments"></i> चैट शुरू करें</button>
+        </div>
+
+        <small class="disclaimer">Live chat powered by Firebase. सुरक्षित और तेज़।</small>
+      </div>
+    </section>
+
+    <!-- Chat Screen -->
+    <section id="chat-screen" class="screen">
+      <header class="chat-header">
+        <div class="left">
+          <button class="icon-btn" id="backBtn" title="Back to Home"><i class="fa-solid fa-arrow-left"></i></button>
+          <div class="title">
+            <div id="chatTitle">श्रीजी महाराज</div>
+            <div id="statusIndicator" class="status online">● ऑनलाइन</div>
+          </div>
+        </div>
+        <div class="right">
+          <a class="icon-btn" href="admin.html" title="Admin Login"><i class="fa-solid fa-user-shield"></i></a>
+        </div>
+      </header>
+
+      <div id="chatArea" class="chat-area" role="log" aria-live="polite">
+        <div class="message astro">नमस्कार भक्त! अपनी समस्या लिखिए, गुरुजी आशीर्वाद देंगे।</div>
+      </div>
+
+      <div class="input-area">
+        <label class="file-label" for="fileInput" title="Attach image"><i class="fa-solid fa-paperclip"></i></label>
+        <input id="fileInput" type="file" accept="image/*" style="display:none">
+
+        <textarea id="msgInput" placeholder="अपना संदेश लिखें..." rows="1" maxlength="800"></textarea>
+
+        <button id="sendBtn" class="btn send"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Loader (hidden) -->
+  <div id="loader" class="loader" aria-hidden="true"></div>
+
+  <!-- Firebase SDKs -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
